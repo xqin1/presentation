@@ -13,8 +13,9 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
         <link rel="stylesheet" href="reveal.js/css/main.css">
-        <link rel="stylesheet" href="css/um.css" id="theme">
-
+       <!--  <link rel="stylesheet" href="css/um.css" id="theme"> -->
+       <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
@@ -38,7 +39,7 @@
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
                 <section>
-                    <h1>Spatial Data Analysis and Visualization Using Opensource Tools</h1>
+                    <h1>Spatial Data Analysis and Visualization</h1>
                     <h3>CompuTech GIS Group at FCC</h3>
                 </section>
                 
@@ -62,6 +63,7 @@
                         <li>National Broadband Map</li>
                         <li>.....</li>
                     </ul>
+                    <br><br>
                     <div>
                     <samll><a href="http://apps.fcc.gov/auction901/map/auction_result_ext.html" target="_blank">Open Demo</a></small>
                     </div>
@@ -73,14 +75,34 @@
                         <li>Pirate Radio Enforcement</li>
                         <li>Electioneering Communications Database</li>
                         <li>Low Power FM Channel Finder</li>
+                        <li>.....</li>
                     </ul>
+                    <br><br>
                     <div>
                     <samll><a href="http://xqin1.github.com/pirateAction/" target="_blank">Open Demo</a></small>
                     </div>
                 </section>
 
                 <section>
-                    <h1 style="padding-top: 220px;">But is it COOL?!?!</h1>
+                    <section>   
+                        <h2>Project: Brain Storming, Prototype </h2>
+                        <ul>
+                            <li>Geocoding Comparison</li>
+                            <li>MapBox API Experiment</li>
+                            <li>CrossFilter API Experiment</li>
+                            <li>.....</li>
+                        </ul>
+                        <br><br>
+                        <div>
+                        <samll><a href="http://xqin1.github.com/pirateAction/" target="_blank">Open Demo</a></small>
+                        </div>
+                    </section>
+
+                     <section data-state="white" style="margin-top:-100px;">
+                            <object data="http://xqin1.github.com/geocodetest/" type="text/html" width="800" height="800"></object>
+            
+                    </section>
+
                 </section>
 
                 <section>
@@ -615,7 +637,8 @@ svg.append( "g" )
                 progress: true,
                 history: true,
                 
-                theme: 'um', // available themes are in /css/theme
+               // theme: 'um', // available themes are in /css/theme
+               theme: Reveal.getQueryHash().theme || 'default', // available themes are in /css/theme
                 transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
 
                 // Optional libraries used to extend on reveal.js
