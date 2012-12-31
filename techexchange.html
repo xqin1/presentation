@@ -46,7 +46,7 @@
                 <section>
                     <h2>Who?</h2>
                     <ul>
-                        <li>Paul Salasznyk - Data Scientist</li>
+                        <li>Paul Salasznyk - Data Scientist/Manager</li>
                         <li>Xiaoming Qin - GIS Lead</li>
                         <li>Nathaniel Guied - UX and Front End</li>
                         <li>Santosh Moghulla - API and Back End</li>
@@ -61,7 +61,7 @@
                         <li>Auction 901</li>
                         <li>Spectrum Dashboard</li>
                         <li>National Broadband Map</li>
-                        <li>.....</li>
+                        <li>FM/AM Engineering</li>
                     </ul>
                     <br><br>
                     <div>
@@ -90,241 +90,119 @@
                             <li>Geocoding Comparison</li>
                             <li>MapBox API Experiment</li>
                             <li>CrossFilter API Experiment</li>
-                            <li>.....</li>
+                            <li>CMA Boundary Research</li>
                         </ul>
-                        <br><br>
-                        <div>
-                        <samll><a href="http://xqin1.github.com/pirateAction/" target="_blank">Open Demo</a></small>
-                        </div>
+
                     </section>
 
-                     <section data-state="white" style="margin-top:-100px;">
+                     <section data-state="white" style="margin-top:-20px;">
                             <object data="http://xqin1.github.com/geocodetest/" type="text/html" width="800" height="800"></object>
+            
+                    </section>
+
+                    <section data-state="white" style="margin-top:-20px;">
+                            <object data="http://xqin1.github.com/cma/" type="text/html" width="800" height="800"></object>
+            
+                    </section>
+
+                    <section data-state="white" style="margin-top:-20px;">
+                            <object data="http://xqin1.github.com/crossfilterExample/" type="text/html" width="800" height="800"></object>
             
                     </section>
 
                 </section>
 
                 <section>
-                    <h2>Streamgraph</h2>
-                    <object data="demos/stream.html" type="text/html" width="800" height="500"></object>
-                    <small><a href="http://mbostock.github.com/d3/ex/stream.html" target="_blank">Credit: Mike Bostock</a></small>
-                </section>
+                        <h2>How we build stuff?</h2>
+                        <ul>
+                            <li><h3>Data</h3></li>
+                            <li><h3>Design</h3></li>
+                            <li><h3>Coding</h3></li>
+                        </ul>
+                </section>               
 
-                <section>
-                    <h2>Rounded Rectangles</h2>
-                    <object data="demos/rects.html" type="text/html" width="800" height="500"></object>
-                    <small><a href="http://bl.ocks.org/1123639" target="_blank">Credit: Mike Bostock</a></small>
-                </section>
-
-                <section>
-                    <h2>Collision Detection</h2>
-                    <object data="demos/collision.html" type="text/html" width="800" height="500"></object>
-                    <small><a href="http://mbostock.github.com/d3/talk/20111018/collision.html" target="_blank">Credit: Mike Bostock</a></small>
-                </section>
-
-                <section>
-                    <h2>Data-Driven Documents</h2>
-                    <ul>
-                        <li>Fairly low level</li>
-                        <li>DOM manipulation based on data</li>
-                        <li>SVG (for the good stuff)</li>
-                        <li class="fragment">HTML and CSS... natch</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Be warned</h2>
-                    <ul>
-                        <li>SVG means IE8 and below is out</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>SVG element types</h2>
-                    <pre><code contenteditable>
-&lt;rect x="0" y="0" width="20" height="100" /&gt;
-
-&lt;circle cx="50" y="50" r="20" /&gt;
-
-&lt;ellipse cx="250" cy="25" rx="100" ry="25" /&gt;
-
-&lt;line x1="0" y1="0" x2="500" y2="50" stroke="black" /&gt;
-
-&lt;text x="250" y="25">Easy-peasy&lt;/text&gt;
-
-&lt;path d="M150 0 L75 200 L225 200 Z"&gt;
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>SVG (super) basics</h2>
-                    <ul>
-                        <li>Must have a base svg element</li>
-                        <li>Element declaration order determines depth</li>
-                    </ul>
-                    <pre class="fragment"><code contenteditable>
-&lt;svg width="800" height="600"&gt;
-    <span class="fragment">&lt;circle cx="50" y="50" r="20" /&gt;</span>
-    <span class="fragment">&lt;circle cx="100" y="250" r="20" /&gt;</span>
-&lt;/svg&gt;
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Enough already!</h2>
-                    <h3>How do we build stuff?!</h3>
-                </section>
-                
                 <section>
                     <section>
-                        <h2>Basic bar chart</h2>
+                        <h2>Data</h2>
+                        <h3>Plain SQL with spatial flavor</h3>
+                        <pre><code>
+                            select col1, col2, col3 from table 1, table 2 where st_intersects(a.1, a.2) and ....
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Python with Psycopg</h3>
                         <pre><code contenteditable>
-var dataset = [ 5, 10, 15, 20, 25 ];
-
-<span class="fragment">d3.select( "body" )</span>
-  <span class="fragment">.selectAll( "div" )</span>
-  <span class="fragment">.data( dataset )</span>
-  <span class="fragment">.enter()</span>
-    <span class="fragment">.append( "div" )</span>
-    <span class="fragment">.attr( "class", "bar" )</span>
-    <span class="fragment">.style( "height", function( d ) {
-        var barHeight = d * 5;
-        return barHeight + "px";
-    } );</span>
-                        </code></pre>
-                        <pre class="fragment"><code contenteditable>
-div.bar {
-    display: inline-block;
-    width: 20px;
-    height: 75px;  /* Gets overriden by D3-assigned height */
-    margin-right: 2px;
-    background-color: teal;
-}
+                                d3.select( "body" )
+                                  .selectAll( "div" )
+                                  .style( "background-color", function( d, i ) {
+                                    // d is datum being rendered
+                                    // i is datum's index in dataset
+                                    // return value based on logic
+                                  } )
                         </code></pre>
                     </section>
-
                     <section>
-                        <h2>Ta-da</h2>
-                        <object data="demos/basicBar.html" type="text/html" width="800" height="500"></object>
-                        <small><a href="http://alignedleft.com/tutorials/d3/drawing-divs/" target="_blank">Credit: Scott Murray</a></small>
+                        <h3>Java with GeoTools</h3>
+                        <pre><code contenteditable>
+                                d3.select( "body" )
+                                  .selectAll( "div" )
+                                  .style( "background-color", function( d, i ) {
+                                    // d is datum being rendered
+                                    // i is datum's index in dataset
+                                    // return value based on logic
+                                  } )
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>GDAL and OGR2OGR</h3>
+                        <pre><code contenteditable>
+                                d3.select( "body" )
+                                  .selectAll( "div" )
+                                  .style( "background-color", function( d, i ) {
+                                    // d is datum being rendered
+                                    // i is datum's index in dataset
+                                    // return value based on logic
+                                  } )
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>GeoScripts from OpenGeo</h3>
+                        <pre><code contenteditable>
+                                d3.select( "body" )
+                                  .selectAll( "div" )
+                                  .style( "background-color", function( d, i ) {
+                                    // d is datum being rendered
+                                    // i is datum's index in dataset
+                                    // return value based on logic
+                                  } )
+                        </code></pre>
                     </section>
                 </section>
 
                 <section>
-                    <h2>Here's the thing...</h2>
-                    <pre><code contenteditable>
-&lt;body&gt;&lt;/body&gt;
-                    </code></pre>
-                    <div class="fragment">But what about this code?
-                    <pre><code contenteditable>
-var dataset = [ 5, 10, 15, 20, 25 ];
+                    <section>
+                        <h2>Design</h2>
+                        <ul>
+                            <li><h3>Browser Support</h3></li>
+                            <li><h3>Web Standard</h3></li>
+                            <li><h3>Responsive</h3></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Browser Support</h2>
+                        <img width="600" height="464" src="images/chrome-vs-firefox-vs-ie.png">
 
-d3.select( "body" )
-  .selectAll( "div" )
-  .data( dataset )
-                    </code></pre>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Keep this in mind</h2>
-                    <blockquote>Instead of telling D3 how to do something, tell D3 what you want.</blockquote>
-                </section>
-
-                <section>
-                    <h2>Selections</h2>
-                    <ul>
-                        <li>Selections are a core concept of D3</li>
-                        <li>Array of elements pulled from the current document</li>
-                        <li>Uses CSS3 to select elements</li>
-                        <li><code>data()</code> joins a selection to data
-                            <ul><li>Everything beyond <code>data()</code> in a chain is executed for each data point</li></ul>
-                        </li>
-                        <li><a href="https://github.com/mbostock/d3/wiki/Selections">Read the wiki</a></li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Selections API</h2>
-                    <ul class="nodots">
-                        <li><code>.attr(name[, value])</code></li>
-                        <li><code>.style(name[, value[, priority]])</code></li>
-                        <li><code>.property(name[, value])</code></li>
-                        <li><code>.html([value])</code></li>
-                        <li><code>.text([value])</code></li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Selections API</h2>
-                    <ul class="nodots">
-                        <li><code>.attr(name, {constant})</code></li>
-                    </ul>
-                    <pre><code contenteditable>
-d3.select( "body" )
-  .selectAll( "div" )
-  .attr( "class", "bar" )
-                    </code></pre>
-
-                    <ul class="nodots" style="padding-top: 20px;">
-                        <li><code>.attr(name, {function})</code></li>
-                    </ul>
-                    <pre><code contenteditable>
-d3.select( "body" )
-  .selectAll( "div" )
-  .attr( "class", function( d, i ) {
-    // d is datum being rendered
-    // i is datum's index in dataset
-    // return value based on logic
-  } )
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Selections API</h2>
-                    <ul class="nodots">
-                        <li><code>.style(name, {constant})</code></li>
-                    </ul>
-                    <pre><code contenteditable>
-d3.select( "body" )
-  .selectAll( "div" )
-  .style( "background-color", "teal" )
-                    </code></pre>
-
-                    <ul class="nodots" style="padding-top: 20px;">
-                        <li><code>.style(name, {function})</code></li>
-                    </ul>
-                    <pre><code contenteditable>
-d3.select( "body" )
-  .selectAll( "div" )
-  .style( "background-color", function( d, i ) {
-    // d is datum being rendered
-    // i is datum's index in dataset
-    // return value based on logic
-  } )
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Selections API</h2>
-                    <ul class="nodots">
-                        <li><code>.attr(name)</code></li>
-                    </ul>
-                    <pre><code contenteditable>
-var className = d3.select( "body" )
-  .selectAll( "div" )
-  .attr( "class" )
-                    </code></pre>
-
-                    <ul class="nodots" style="padding-top: 20px;">
-                        <li><code>.style(name)</code></li>
-                    </ul>
-                    <pre><code contenteditable>
-var bgColor = d3.select( "body" )
-  .selectAll( "div" )
-  .style( "background-color" )
-                    </code></pre>
+                    </section>
+                    <section>
+                        <h2>Web Standard</h2>
+                        <ul>
+                            <li><h3>HTML5</h3></li>
+                            <li><h3>CSS3</h3></li>
+                            <li><h3>SVG</h3></li>
+                            <li><h3>JSON and GeoJSON</h3></li>
+                            <li><h3>API</h3></li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
