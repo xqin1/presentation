@@ -203,282 +203,102 @@
                             <li><h3>API</h3></li>
                         </ul>
                     </section>
+                     <section>
+                        <h2>Responsive</h2>
+                        <h3>work with various devices</h3>
+                        <img width="600" height="464" src="images/chrome-vs-firefox-vs-ie.png">
+
+                    </section>
+                    <section>
+                        <h2>Responsive</h2>
+                        <h3>work with various device
+                        <img width="600" height="464" src="images/chrome-vs-firefox-vs-ie.png">
+
+                    </section>
                 </section>
 
                 <section>
-                    <h2><code>enter()</code> and <code>exit()</code></h2>
-                    <ul>
-                        <li>Subselections representing elements to be added or removed</li>
-                        <li><code>enter()</code> creates new, data-bound DOM elements and is generally followed by <code>append()</code></li>
-                        <li><code>exit()</code> is generally followed (eventually) by <code>remove()</code></li>
-                    </ul>
-                </section>
-
-            <section>
-                <section>
-                    <h2>Scales</h2>
-                    <ul style="max-width: 700px;">
-                        <li>“Scales are functions that map from an input domain to an output range.” -Mike Bostock</li>
-                        <li>Normalize values</li>
-                        <li>Make charts infinitely more flexible</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Scatterplot without scales</h2>
-                    <pre><code contenteditable>
-var dataset = [ 5, 10, 15, 20, 25 ];
-var w = 200;
-var h = 200;
-
-var svg = d3.select( "body" )
-        .append( "svg" )
-        .attr( "width", w ).attr( "height", h )
-        .style( "background-color", "#DDDDDD" );
-
-svg.selectAll( "circle" )
-        .data( dataset )
-        .enter()
-        .append( "circle" )
-        .attr( "opacity", .3 )
-        .attr( "cx", function( d ) {
-            return d;
-        } )
-        .attr( "cy", function( d ) {
-            return d;
-        } )
-        .attr( "r", 12 );
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Scatterplot without scales</h2>
-                    <object data="demos/svgScatter.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Scatterplot with X scale</h2>
-                    <pre><code contenteditable>
-// instead of simply returning the data value
-.attr( "cx", function( d ) {
-    return d;
-} )
-
-// create a scale and use it to transform the value
-var xScale = d3.scale.linear()
-        .domain( [d3.min( dataset ), d3.max( dataset )] )
-        .range( [0, w] );
-
-.attr( "cx", function( d ) {
-    return xScale( d );
-} )
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Scatterplot with X scale</h2>
-                    <object data="demos/svgScatterWithXScale.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Scatterplot with X and Y scale</h2>
-                    <pre><code contenteditable>
-var xScale = d3.scale.linear()
-        .domain( [d3.min( dataset ), d3.max( dataset )] )
-        .range( [0, w] );
-
-var yScale = d3.scale.linear()
-        .domain( [d3.min( dataset ), d3.max( dataset )] )
-        .range( [0, h] );
-
-        .attr( "cx", function( d ) {
-            return xScale( d );
-        } )
-        .attr( "cy", function( d ) {
-            return yScale( d );
-        } )
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Scatterplot with X and Y scale</h2>
-                    <object data="demos/svgScatterWithScales.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Flexible you say?</h2>
-                    Changing this
-                    <pre><code contenteditable>
-var w = 600;
-var h = 300;
-                    </code></pre>
-                    Gets you this
-                    <object data="demos/svgScatterWithScalesResized.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Prevent run off with padding</h2>
-                    <pre><code contenteditable>
-var padding = 30;
-
-var xScale = d3.scale.linear()
-        .domain( [d3.min( dataset ), d3.max( dataset )] )
-        .range( [padding, w - padding] );
-
-var yScale = d3.scale.linear()
-        .domain( [d3.min( dataset ), d3.max( dataset )] )
-        .range( [padding, h - padding] );
-                    </code></pre>
-                    <object data="demos/svgScatterWithScalesAndPadding.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Scumbag SVG orients top-left</h2>
-                    Wouldn't you expect this data
-                    <pre><code contenteditable>
-var dataset = [ 5, 10, 15, 20, 25 ];
-                    </code></pre>
-                    To produce something like this?
-                    <object data="demos/svgScatterWithScalesAndPaddingReoriented.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Scales to the rescue</h2>
-                    Reversing the range does the trick
-                    <pre><code contenteditable>
-    .range( [padding, h - padding] );
-                    </code></pre>
-                    becomes
-                    <pre><code contenteditable>
-    .range( [h - padding, padding] );
-                    </code></pre>
-                    <object data="demos/svgScatterWithScalesAndPaddingReoriented.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Scales normalize...</h2>
-                    <pre><code contenteditable>
-var dataset = [ 5, 10, 15, 20, 25, 100 ];
-                    </code></pre>
-                    <object data="demos/svgScatterWithScalesAndPaddingReorientedPlusOutlyingData.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>...and interpolate</h2>
-                    <pre><code contenteditable>
-var colorScale = d3.scale.linear()
-        .domain( [ 5, 25 ] )
-        .range( ["orange", "purple"] );
-
-.attr( "fill", function( d ) {
-    return colorScale( d );
-} )
-                    </code></pre>
-                    <object data="demos/svgScatterWithScalesAndPaddingReorientedWithColorScale.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>Crazy powerful</h2>
-                    <pre><code contenteditable>
-var colorScale = d3.scale.linear()
-        .domain( [ 5, 15, 25 ] )
-        .range( ["red", "purple", "green"] );
-
-.attr( "fill", function( d ) {
-    return colorScale( d );
-} )
-                    </code></pre>
-                    <object data="demos/svgScatterWithScalesAndPaddingReorientedWithColorScale2.html" type="text/html" width="800" height="400"></object>
-                </section>
-
-                <section>
-                    <h2>OK, let's move on!</h2>
-                    <ul>
-                        <li>But seriously, get comfy with scales</li>
-                        <li>Read <a href="http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/">d3: scales, and color.</a> by <a href="http://www.jeromecukier.net/">Jerome Cukier</a></li>
-                    </ul>
-                </section>
-            </section>
-
-            <section>
-                <h2>Axes</h2>
-                <pre><code contenteditable>
-var xScale = d3.scale.linear()
-        .domain( [0, 50] )
-        .range( [padding, w - padding] );
-
-var xAxis = d3.svg.axis()
-    .scale( xScale ).orient( "bottom" ).ticks( 5 );
-
-svg.append( "g" )
-    .attr( "class", "axis" )
-    .attr( "transform", "translate(0, " + (h - padding) + " )" )
-    .call( xAxis );
-                </code></pre>
-                <object data="demos/svgScatterWithAxes.html" type="text/html" width="800" height="400"></object>
-            </section>
-
-            <section>
-                <section>
-                    <h2>Transitions</h2>
-                    <pre><code contenteditable>
-    .enter()
-    .append( "circle" )
-    .attr( "cx", w )
-    .attr( "cy", h )
-    .attr( "r", 0 )
-        .transition()
-            .delay( 250 )
-            .duration( 500 )
-            .attr( "cx", function( d ) {
-                return xScale( d );
-            } )
-            .attr( "cy", function( d ) {
-                return yScale( d );
-            } )
-            .attr( "r", 12 );
-                    </code></pre>
-                    <a href="demos/svgScatterWithTransitions1.html" target="_blank">Open Demo</a>
+                    <section>
+                        <h2>Coding</h2>
+                        <ul>
+                            <li>embrace opensource tools</li>
+                            <li>Github</li>
+                            <li>Postgres + PostGIS</li>
+                            <li>GeoServer + OpenLayers/LeafLet</li>
+                            <li>MapBox Basemap + API</li>
+                            <li>CartoDB</li>
+                            <li>D3</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Census Data using MapBox</h2>
+                         <object data="http://www.computechinc.com/show/GIS-census/" type="text/html" width="1200" height="800"></object>
+                    </section>
+                    <section>
+                        <h2>10 Years LPFM Data using CartoDB</h2>
+                         <object data="http://xqin1.github.com/cartodb/lpfmpoint.html" type="text/html" width="1200" height="800"></object>
+                    </section>
+                    <section>
+                        <h2>10 years Internatiocanl Call Data using D3</h2>
+                        <ul>
+                            <li> not map centric</li>
+                            <li>heavy transitions and animations</li>
+                        </ul>
+                        <br><br>
+                        <div>
+                            <samll><a href="http://xqin1.github.com/calltraffic/traffic2010.html" target="_blank">Open Demo-bubble chart</a></small>
+                        <div>
+                        <br>
+                        <div>
+                            <samll><a href="http://xqin1.github.com/calltraffic/trafficbyyear.html" target="_blank">Open Demo-bar chart</a></small>
+                        <div>
+                        </section>
                 </section>
                 <section>
-                    <h2>Transitions</h2>
-                    Values swapped for functions... again
-                    <pre><code contenteditable>
-    .enter()
-    .append( "circle" )
-    .attr( "cx", w )
-    .attr( "cy", h )
-    .attr( "r", 0 )
-        .transition()
-            .delay( function( d, i ) {
-               return i * 100;
-            } )
-            .duration( 500 )
-            .attr( "cx", function( d ) {
-                return xScale( d );
-            } )
-            .attr( "cy", function( d ) {
-                return yScale( d );
-            } )
-            .attr( "r", 12 );
-                    </code></pre>
-                    <a href="demos/svgScatterWithTransitions2.html" target="_blank">Open Demo</a>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <a href="demos/svgScatterWithTransitions3.html" target="_blank">Open Gratuitous Demo</a>
+                    <section>
+                        <h2>What's Next?</h2>
+                        <ul>
+                            <li>collaboration with other teams</li>
+                            <li>Big Data - Hadoop</li>
+                            <li>Explore integrating R in our work flow</li>
+                            <li>Map Centric projects: MapBox + CartoDB</li>
+                            <li>General Visulation: D3</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>We want to do stuff like this...</h2>
+                    </section>
+                    <section>
+                        <h2>And We want to do stuff like this...</h2>
+                    </section>
+                    <section>
+                        <h2>And We want to do stuff like this...</h2>
+                    </section>
                 </section>
-            </section>
+                <section>
+                    <section>
+                        <h1 style="margin-left:-800px;">We</h1>
+                    </section>
+                    <section>
+                        <h1 style="margin-left:-800px;">We</h1>
+                        <h1 style="margin-left:-500px">want to</h1>
+                    </section>
+                    <section>
+                        <h1 style="margin-left:-800px;">We</h1>
+                        <h1 style="margin-left:-500px">want to</h1>
+                        <h1 style="margin-left:-400px">tell</h1>
+                    </section>
+                    <section>
+                        <h1 style="margin-left:-800px;">We</h1>
+                        <h1 style="margin-left:-500px">want to</h1>
+                        <h1 style="margin-left:-400px">tell</h1>
+                        <h1 style="margin-left:200px">better stories...</h1>
+                    </section>
+
+                </section>
+
             
-            <section>
-                <h2>Further Reading</h2>
-                <ul>
-                    <li><a href="http://alignedleft.com/tutorials/d3/">Scott Murray's D3 Tutorial</a></li>
-                    <li><a href="http://bost.ocks.org/mike/join/">Thinking with Joins</a></li>
-                    <li><a href="http://bost.ocks.org/mike/constancy/">Object Constancy</a></li>
-                    <li><a href="http://www.jeromecukier.net/blog/2012/05/28/manipulating-data-like-a-boss-with-d3/">Manipulating data like a boss with d3</a></li>
-                    <li><a href="http://www.jeromecukier.net/blog/2012/07/16/animations-and-transitions/">animations and transitions</a></li>
-                    <li><a href="http://bost.ocks.org/mike/">Mike Bostock</a></li>
-                </ul>
-            </section>
+
 
             <section>
                 <h1 style="padding-top: 230px;">Questions?</h1>
