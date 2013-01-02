@@ -74,8 +74,8 @@
                     <ul>
                         <li>Pirate Radio Enforcement</li>
                         <li>Electioneering Communications Database</li>
-                        <li>Low Power FM Channel Finder</li>
-                        <li>.....</li>
+                        <li>Low Power FM Channel Analysis</li>
+                        <li>Antenna Registration System Location Map</li>
                     </ul>
                     <br><br>
                     <div>
@@ -100,13 +100,13 @@
             
                     </section>
 
-                    <section data-state="white" style="margin-top:-20px;">
-                            <object data="http://xqin1.github.com/cma/" type="text/html" width="800" height="800"></object>
+                    <section data-state="white" style="margin-top:-20px;margin-left:-200px">
+                            <object data="http://xqin1.github.com/cma/" type="text/html" width="1200" height="800"></object>
             
                     </section>
 
-                    <section data-state="white" style="margin-top:-20px;">
-                            <object data="http://xqin1.github.com/crossfilterExample/" type="text/html" width="800" height="800"></object>
+                    <section data-state="white" style="margin-top:-20px;margin-left:-200px">
+                            <object data="http://xqin1.github.com/crossfilterExample/" type="text/html" width="1200" height="800"></object>
             
                     </section>
 
@@ -126,55 +126,86 @@
                         <h2>Data</h2>
                         <h3>Plain SQL with spatial flavor</h3>
                         <pre><code>
-                            select col1, col2, col3 from table 1, table 2 where st_intersects(a.1, a.2) and ....
+insert into swat.block_centroid_pop_within_5600m
+select b.geoid10, sum(c.pop_2011)
+from census.block2010_centroid b,swat.block_centroid_pop_2163 c
+where st_dwithin(st_transform(b.geom,2163),c.geom,5600)
+and b.statefp10='14'
+group by b.geoid10;
                         </code></pre>
                     </section>
                     <section>
                         <h3>Python with Psycopg</h3>
                         <pre><code contenteditable>
-                                d3.select( "body" )
-                                  .selectAll( "div" )
-                                  .style( "background-color", function( d, i ) {
-                                    // d is datum being rendered
-                                    // i is datum's index in dataset
-                                    // return value based on logic
-                                  } )
-                        </code></pre>
+try:     
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor()
+        row_count=0
+        for s in statefp:
+            cursor.execute("insert into 
+                    swat.fixed_total_partial_unavail_5m 
+                    select unavail_type,state_fips,
+                    ST_SimplifyPreserveTopology(geom,5) 
+                    from swat.fixed_total_partial_unavail 
+                    where state_fips=%(statefp)s", {'statefp':s})
+            conn.commit()
+except psycopg2.DatabaseError, e: 
+        if conn:
+            conn.rollback() 
+        print 'Error %s' % e    
+        sys.exit(1)   
+finally:   
+        if conn:
+            conn.close()</code></pre>
                     </section>
                     <section>
                         <h3>Java with GeoTools</h3>
                         <pre><code contenteditable>
-                                d3.select( "body" )
-                                  .selectAll( "div" )
-                                  .style( "background-color", function( d, i ) {
-                                    // d is datum being rendered
-                                    // i is datum's index in dataset
-                                    // return value based on logic
-                                  } )
-                        </code></pre>
+public static Geometry createPolygonFromCoordinates
+                (List<Coordinate> coordinates)
+{
+    Coordinate[] coordinatesArray = 
+                    new Coordinate[coordinates.size()];
+    coordinates.toArray(coordinatesArray);
+    GeometryFactory geometryFactory = 
+                    new GeometryFactory();
+    LinearRing linearRing = geometryFactory.
+                            createLinearRing(coordinatesArray);
+    Geometry geometry = geometryFactory.
+                            createPolygon(linearRing, null);
+    return geometry;
+}</code></pre>
                     </section>
                     <section>
                         <h3>GDAL and OGR2OGR</h3>
                         <pre><code contenteditable>
-                                d3.select( "body" )
-                                  .selectAll( "div" )
-                                  .style( "background-color", function( d, i ) {
-                                    // d is datum being rendered
-                                    // i is datum's index in dataset
-                                    // return value based on logic
-                                  } )
+ogr2ogr -t_srs "EPSG:4326" 
+                -where "na2 = 'GM'" 
+                        polbnda_germany.shp
+gltp:/vrf/grass0/warmerdam/v0eur/vmaplv0/eurnasia 
+                        'polbnda@bnd(*)_area'
+ogrinfo -summary 
+        polbnda_germany.shp 
+                polbnda_germany | grep Extent
+# Extent: (5.865639, 47.275776) - (15.039889, 55.055637)
+# W S E N
                         </code></pre>
                     </section>
                     <section>
                         <h3>GeoScripts from OpenGeo</h3>
                         <pre><code contenteditable>
-                                d3.select( "body" )
-                                  .selectAll( "div" )
-                                  .style( "background-color", function( d, i ) {
-                                    // d is datum being rendered
-                                    // i is datum's index in dataset
-                                    // return value based on logic
-                                  } )
+from geoscript.layer import Shapefile
+shp = Shapefile('world_boundaries/builtup_area.shp')
+cities = ['CALGARY', 'VANCOUVER', 'DENVER', 'CHICAGO']
+box = Bounds(-20037508,-19929239,20037508,19929239, 
+                                        'epsg:900913')
+for city_name in cities:
+  city_area = reduce(lambda x,y: x.union(y),
+            [f.geom for f in shp.features
+                    ("nam = '%s'" % city_name)])
+  city_bnds = Bounds(env=city_area.bounds(), 
+                                prj='epsg:3395').
+                                reproject('epsg:900913')
                         </code></pre>
                     </section>
                 </section>
@@ -203,16 +234,15 @@
                             <li><h3>API</h3></li>
                         </ul>
                     </section>
-                     <section>
+                     <section style="margin-left:-200px;">
                         <h2>Responsive</h2>
                         <h3>work with various devices</h3>
-                        <img width="600" height="464" src="images/chrome-vs-firefox-vs-ie.png">
-
+                         <object data="http://apps.fcc.gov/accessibilityclearinghouse/products.html?pgID=2/" type="text/html" width="1200" height="800"></object>
                     </section>
                     <section>
                         <h2>Responsive</h2>
-                        <h3>work with various device
-                        <img width="600" height="464" src="images/chrome-vs-firefox-vs-ie.png">
+                        <h3>work with various device</h3>
+                         <object data="http://apps.fcc.gov/accessibilityclearinghouse/products.html?pgID=2/" type="text/html" width="400" height="600"></object>
 
                     </section>
                 </section>
@@ -220,8 +250,8 @@
                 <section>
                     <section>
                         <h2>Coding</h2>
+                        <h3>embrace opensource tools</h3>
                         <ul>
-                            <li>embrace opensource tools</li>
                             <li>Github</li>
                             <li>Postgres + PostGIS</li>
                             <li>GeoServer + OpenLayers/LeafLet</li>
@@ -232,7 +262,7 @@
                     </section>
                     <section>
                         <h2>Census Data using MapBox</h2>
-                         <object data="http://www.computechinc.com/show/GIS-census/" type="text/html" width="1200" height="800"></object>
+                         <object data="http://xqin1.github.com/census_computech/" type="text/html" width="1200" height="800"></object>
                     </section>
                     <section>
                         <h2>10 Years LPFM Data using CartoDB</h2>
@@ -265,14 +295,18 @@
                             <li>General Visulation: D3</li>
                         </ul>
                     </section>
-                    <section>
+                    <section style="margin-left:-200px">
                         <h2>We want to do stuff like this...</h2>
+                        <object data="http://www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html" type="text/html" width="1200" height="800"></object>
                     </section>
-                    <section>
+                    <section style="margin-left:-200px">
                         <h2>And We want to do stuff like this...</h2>
+                        <object data="http://visual.ly/wind-map?view=true" type="text/html" width="1200" height="800"></object>
                     </section>
-                    <section>
+                    <section style="margin-left:-200px">
                         <h2>And We want to do stuff like this...</h2>
+                        <object data="http://trends.truliablog.com/vis/metro-movers/" type="text/html" width="1200" height="800"></object>
+
                     </section>
                 </section>
                 <section>
@@ -296,10 +330,6 @@
                     </section>
 
                 </section>
-
-            
-
-
             <section>
                 <h1 style="padding-top: 230px;">Questions?</h1>
             </section>
