@@ -1,0 +1,536 @@
+<!doctype html>  
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Spatial Data Analysis and Visualization</title>
+
+        <meta name="description" content="Spatial Data Analysis and Visualization">
+        <meta name="author" content="Xiaoming Qin">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+       <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+        <script>
+            // If the query includes 'print-pdf' we'll use the PDF print sheet
+            document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+        
+        <div class="reveal">
+
+            <!-- Used to fade in a background when a specific slide state is reached -->
+            <div class="state-background"></div>
+            
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Spatial Isn't Special</h1>
+                    <h3 style="margin-top:280px;">Xiaoming Qin</h3>
+                </section>
+                
+                <section>
+                    <h2>Who am I?</h2>
+                    <ul>
+                        <li>Over 10 years experience in Geospatial Field</li>
+                        <li>Expertise in both ESRI and Open Source Stack</li>
+                        <li>Take ownership and pride for everything I do</li>
+                        <li>Believe in Right Tool For Right Job</li>
+                        <li>Lifetime learner</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>City of Redmond, WA (2004-2008)</h2>
+                        <ul>
+                            <li>Initiated Web Mapping using Intergraph WebMap 5.0</li>
+                            <li>Switched to ArcGIS Server 9.1</li>
+                            <li>Used WebADF framework/viewer</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>City of Redmond, WA (2004-2008)</h2>
+                        <h2>Takeaways</h2>
+                        <ul>
+                            <li>Online Mapping is the future</li>
+                            <li>Avoid Template if you can</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Prince William County, VA (2008-2010)</h2>
+                        <ul>
+                            <li>Managed ArcGIS Server 9.3,10.0</li>
+                            <li>Migrated County Mapper from ArcIMS to ArcGIS Server</li>
+                            <li>Used ArcGIS Javascript API</li>
+                            <li>Map Service, Geocoding Service and Caching</li>
+                            <li>General Web Services on Back End using .NET</li>
+                            <li>Developed Demographic Viewer using ArcGIS Flex API (v2.0)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Prince William County, VA (2008-2010)</h2>
+                        <img width="600" height="364" src="images/CMXM.jpg">
+                        <samll><a href="http://gisweb.pwcgov.org/webapps/CountyMapper/" target="_blank">Open Demo-County Mapper</a></small>
+                    </section>
+                    <section>
+                        <h2>Prince William County, VA (2008-2010)</h2>
+                        <h2>Takeaways</h2>
+                        <ul>
+                            <li>Take Migration as a chance to redesign the whole thing</li>
+                            <li>Think twice for map-centric application</li>
+                            <li>Start over if the app looks familiar (HINT: ArcMap)</li>
+                            <li>NO SEARCH BOX = #FAIL</li>
+                            <li>For browser-based apps, Javascript is KING</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Federal Communication Commission (2010 - present)</h2>
+                        <h2>Project: Integrated Geospatial Component of Enterprise Application</h2>
+                    </section>
+                    <section>
+                        <h3>Spectrum Dashboard</h3>
+                        <ul>
+                            <li>ArcGIS Server 10 and Flex API 2.0</li>
+                            <li>FME as ETL tool</li>
+                            <li>J2EE and GeoTools for geometry manipulations</li>
+                        </ul>
+                        <br><br>
+                        <div>
+    <!--                     <samll><a href="http://apps.fcc.gov/auction901/map/auction_result_ext.html" target="_blank">Open Demo</a></small>-->
+                            <samll><a href="http://reboot.fcc.gov/reform/systems/spectrum-dashboard" target="_blank">Open Demo - Spectrum Dashboard</a></small>
+                       </div>
+                    </section>
+
+                    <section>
+                        <h3>National Broadband Map</h3>
+                        <ul>
+                            <li>Prototype built on ArcGIS Server 10 and Javascript API</li>
+                            <li>Cost-prohibitive for scaling</li>
+                            <li>Complete Open Source Stack for final product</li>
+                            <li>GeoServer, Postgres/Postgis, OpenLayers, MonogDB</li>
+                            <li>Developed on Amazon EC2, embraced Agil methodology</li>
+                            <li>API driven, RESTful</li>
+                        </ul>
+                        <br><br>
+                        <div>
+    <!--                     <samll><a href="http://apps.fcc.gov/auction901/map/auction_result_ext.html" target="_blank">Open Demo</a></small>-->
+                            <samll><a href="http://broadbandmap.gov" target="_blank">Open Demo - National Broadband Map</a></small>
+                       </div>
+                    </section>
+                    <section>
+                        <h3>Mexico Speed Test</h3>
+                        <ul>
+                            <li>Crowdsource data collection and analysis</li>
+                            <li>Google Map, Google Geocoding, OpenLayers</li>
+                            <li>Mimic National Broadband Map architecture</li>
+                        </ul>
+                        <br><br>
+                        <div>
+    <!--                     <samll><a href="http://apps.fcc.gov/auction901/map/auction_result_ext.html" target="_blank">Open Demo</a></small>-->
+                            <samll><a href="http://www.micofetel.gob.mx/medidor_de_velocidad" target="_blank">Open Demo - Mexico Speed Test</a></small>
+                       </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Federal Communication Commission (2010 - present)</h2>
+                        <h2>Project: Standalone GIS/Visualization Application </h2>
+                    </section>
+                    <section>
+                        <h2>FCC Maps / MapBox</h2>
+                        <ul>
+                            <li>use TileMill to create tiles</li>
+                            <li>Hosted on Mapbox</li>
+                            <li>extremely fast time-to-market, but limited functionality</li>
+                            <li>easily sharing tileset, embedding map</li>
+                        </ul>
+                        <br><br>
+                        <div>
+                        <samll><a href="http://www.fcc.gov/maps" target="_blank">Open Demo - FCC Maps</a></small>
+                        </div>
+                    </section>
+                    <!-- <section>
+                        <h2>Low Power FM Channel Analysis / CartoDB</h2>
+                        <ul>
+                            <li>Entire PostGIS as RESTful service</li>
+                            <li>Torque library for spatial/temporal visualization</li>
+                            <li>Both SQL API and Map API for easy integration</li>                        
+                        </ul>
+                        <br><br>
+                        <div>
+                        <samll><a href="http://www.fcc.gov/maps/evolution-lpfm-stations" target="_blank">Open Demo - FCC LPFM</a></small>
+                        </div>
+                    </section> -->
+                    <section>
+                        <h2>Map-oriented Apps</h2>
+                        <ul>
+                            <li>Rigth Tool for Right Job</li>
+                            <li>Most Open Source Tools, FME and ESRI Desktop tools mixed in</li>
+                            <li>Focused story, simple UI</li> 
+                            <li>Easy to maintain is top priority</li>                       
+                        </ul>
+                        <br><br>
+                        <div>
+                        <samll><a href="http://fcc.github.com/pirateaction2/" target="_blank">Open Demo - FCC Pirate Radio</a></small>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>With or Without Map / D3.js</h2>
+                        <ul>
+                            <li>Visualization framework, ultimate flexibility</li>
+                            <li>Powerful GEO package</li>
+                            <li>integration with LeafLet.js for best of both</li> 
+                            <li>Steep learning curse, tons of exmaples</li>                       
+                        </ul>
+                        <br><br>
+                        <div>
+                        <samll><a href="http://fcc.github.io/calltraffic/traffic2011.html" target="_blank">Open Demo - 2011 call traffic</a></small>
+                        </div>
+                        <div>
+                            <samll><a href="http://fcc.github.io/calltraffic/trafficbyyear.html" target="_blank">Open Demo - time series</a></small>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>   
+                        <h2>Federal Communication Commission (2010 - present)</h2>
+                        <h2>Project: GIS R/D and Prototyping</h2>
+                        <ul>
+                            <li>Evaluate emerging technology</li>
+                            <li>Executed as formal project</li>
+                            <li>Delieveries as report, presentation or mock-up</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Crossfilter</h2>
+                        <ul>
+                            <li>Authored by d3.js creator</li>
+                            <li>Optimized to slice and dice large dataset</li>
+                            <li>Coordinated multi-dimention visualization</li>
+                        </ul>
+                        <div>
+                        <samll><a href="http://xqin1.github.com/crossfilterExample/" target="_blank">Open Demo - Cross Filter</a></small>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Topojson</h2>
+                        <ul>
+                            <li>Extension of GeoJSON that encodes topology</li>
+                            <li>Geometries compression from shared line segments</li>
+                            <li>Potential solution for handling large data set in brower</li>
+                        </ul>
+                        <div>
+                        <samll><a href="https://github.com/xqin1/d3_playground/blob/gh-pages/data/statecounty.json" target="_blank">Open Demo - Topojson</a></small>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Leaflet Markercluster</h2>
+                        <ul>
+                            <li>Plugin for popular Leaflet libary</li>
+                            <li>Classic point cluster solution with great performance</li>
+                            <li>Extention point for customization</li>
+                        </ul>
+                        <div>
+                        <samll><a href="http://localhost/projects/radioservice/radiostation.html" target="_blank">Open Demo - Cluster</a></small>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Concepts => Production Candidat</h2>
+                        <ul>
+                            <li>Advantage of Agile Methology</li>
+                            <li>Short Iterations/Sprints</li>
+                            <li>Functioal product from day one</li>
+                        </ul>
+                        <div>
+                        <samll><a href="http://localhost/projects/radioservice/results-summary.html" target="_blank">Open Demo - Production Ready</a></small>
+                        </div>
+
+                    </section>
+                </section>
+
+                 <section>
+                    <section>
+                        <h2>Federal Communication Commission (2010 - present)</h2>
+                        <h2>Mobile App Development</h2>
+                        <ul>
+                            <li>Mobile-Ready Mindset</li>
+                            <li>True Response Design Principle</li>
+                            <li>Native app or Web App?</li>
+                            <li>Can not be a afterthought</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>National Broadband Map Mobile</h2>
+                        <ul>
+                            <li>JQuery Mobile Framework </li>
+                            <li>Shared Architecture with Desktop </li>
+                            <li>Same URL, routing based on browser type</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Responsive Design</h2>
+                        <ul>
+                            <li>Work with various devices</li>
+                            <li>Twitter's Bootstrap Framework</li>
+                            <li>TODO: Content enhance based on device type</li>
+                            <li>TODO: Use Feature-detection and Server-side enhancement</li>
+                        </ul>
+                        <div>
+                        <samll><a href="http://vizui.github.com/lpfm-demo/index.html" target="_blank">Open Demo - LPFM MOBILE</a></small>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                        <h2>Build Applications</h2>
+                        <ul>
+                            <li><h3>Data</h3></li>
+                            <li><h3>Design</h3></li>
+                            <li><h3>Coding</h3></li>
+                        </ul>
+                </section>               
+
+                <section>
+                    <section>
+                        <h2>Data</h2>
+                        <h3>Plain SQL with spatial flavor</h3>
+                        <pre><code>
+insert into swat.block_centroid_pop_within_5600m
+select b.geoid10, sum(c.pop_2011)
+from census.block2010_centroid b,swat.block_centroid_pop_2163 c
+where st_dwithin(st_transform(b.geom,2163),c.geom,5600)
+and b.statefp10='14'
+group by b.geoid10;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Python with Psycopg</h3>
+                        <pre><code contenteditable>
+try:     
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor()
+        row_count=0
+        for s in statefp:
+            cursor.execute("insert into 
+                    swat.fixed_total_partial_unavail_5m 
+                    select unavail_type,state_fips,
+                    ST_SimplifyPreserveTopology(geom,5) 
+                    from swat.fixed_total_partial_unavail 
+                    where state_fips=%(statefp)s", {'statefp':s})
+            conn.commit()
+except psycopg2.DatabaseError, e: 
+        if conn:
+            conn.rollback() 
+        print 'Error %s' % e    
+        sys.exit(1)   
+finally:   
+        if conn:
+            conn.close()</code></pre>
+                    </section>
+                    <section>
+                        <h3>Java with GeoTools</h3>
+                        <pre><code contenteditable>
+public static Geometry createPolygonFromCoordinates
+                (List<Coordinate> coordinates)
+{
+    Coordinate[] coordinatesArray = 
+                    new Coordinate[coordinates.size()];
+    coordinates.toArray(coordinatesArray);
+    GeometryFactory geometryFactory = 
+                    new GeometryFactory();
+    LinearRing linearRing = geometryFactory.
+                            createLinearRing(coordinatesArray);
+    Geometry geometry = geometryFactory.
+                            createPolygon(linearRing, null);
+    return geometry;
+}</code></pre>
+                    </section>
+                    <section>
+                        <h3>GDAL and OGR2OGR</h3>
+                        <pre><code contenteditable>
+ogr2ogr -t_srs "EPSG:4326" 
+                -where "na2 = 'GM'" 
+                        polbnda_germany.shp
+gltp:/vrf/grass0/warmerdam/v0eur/vmaplv0/eurnasia 
+                        'polbnda@bnd(*)_area'
+ogrinfo -summary 
+        polbnda_germany.shp 
+                polbnda_germany | grep Extent
+# Extent: (5.865639, 47.275776) - (15.039889, 55.055637)
+# W S E N
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>GeoScripts from OpenGeo</h3>
+                        <pre><code contenteditable>
+from geoscript.layer import Shapefile
+shp = Shapefile('world_boundaries/builtup_area.shp')
+cities = ['CALGARY', 'VANCOUVER', 'DENVER', 'CHICAGO']
+box = Bounds(-20037508,-19929239,20037508,19929239, 
+                                        'epsg:900913')
+for city_name in cities:
+  city_area = reduce(lambda x,y: x.union(y),
+            [f.geom for f in shp.features
+                    ("nam = '%s'" % city_name)])
+  city_bnds = Bounds(env=city_area.bounds(), 
+                                prj='epsg:3395').
+                                reproject('epsg:900913')
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Design</h2>
+                        <ul>
+                            <li><h3>Browser Support</h3></li>
+                            <li><h3>Web Standard</h3></li>
+                            <li><h3>Responsive</h3></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Browser Support</h2>
+                        <img width="600" height="464" src="images/chrome-vs-firefox-vs-ie.png">
+                    </section>
+                    <section>
+                        <h2>Browser Wars..</h2>
+                        <h4 style="margin-left:400px">(Life is Short...)</h4>
+                        <img width="600" height="664" src="images/BROWSER-WARS.jpg">
+                    </section>
+                    <section>
+                        <h2>Web Standard</h2>
+                        <ul>
+                            <li><h3>HTML5</h3></li>
+                            <li><h3>CSS3</h3></li>
+                            <li><h3>SVG</h3></li>
+                            <li><h3>JSON and GeoJSON</h3></li>
+                            <li><h3>API</h3></li>
+                            <li><h3>TopoJSON (??)</h3></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Coding</h2>
+                        <h2>Embrace opensource tools</h2>
+                        <ul>
+                            <li>Github</li>
+                            <li>Postgres + PostGIS</li>
+                            <li>GeoServer + OpenLayers/LeafLet</li>
+                            <li>MapBox Basemap + API</li>
+                            <li>CartoDB</li>
+                            <li>D3</li>
+                            <li>MongoDB</li>
+                            <li>node.js</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Right Proprietory Tools Mixed in</h2>
+                        <ul>
+                            <li>ArcGIS Family</li>
+                            <li>FME</li>
+                            <li>Oracle</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                        <h2>Federal Communication Commission (2010 - present)</h2>
+                        <h2>Takeaways</h2>
+                        <ul>
+                            <li>GIS  *IS* IT</li>
+                            <li>DATA</li>
+                            <li>OPEN (Regardless of Choice of Tools)</li>
+                            <li>MOBILE</li>
+                            <li>API</li>
+                            <li>TIME TO MARKET</li>
+                            <li>STORY TELLING, WITH OR WITHOUT MAP</li>
+                        </ul>
+                </section>
+                <section>
+                    <h1>Spatial Isn't Special</h1>
+                </section>
+            <section>
+                <h1 style="padding-top: 230px;">Questions?</h1>
+            </section>
+
+            <section>
+                <h1 style="padding-top: 230px;">Thank You!</h1>
+            </section>
+
+            </div> <!-- END OF SLIDES -->
+
+            
+            
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.min.js"></script>
+
+        <script>
+            
+            // // Full list of configuration options available here:
+            // // https://github.com/hakimel/reveal.js#configuration
+            // Reveal.initialize({
+            //     controls: true,
+            //     progress: true,
+            //     history: true,
+            //     center:true,
+                
+            //    // theme: 'um', // available themes are in /css/theme
+            //    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            //     transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/linear(2d)
+
+            //     // Optional libraries used to extend on reveal.js
+            //     dependencies: [
+            //         { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+            //         { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+            //     ]
+            // });
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+            
+        </script>
+
+    </body>
+</html>
