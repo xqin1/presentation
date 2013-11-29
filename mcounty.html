@@ -79,7 +79,7 @@
                             <li>Used ArcGIS Javascript API</li>
                             <li>Map Service, Geocoding Service and Caching</li>
                             <li>General Web Services on Back End using .NET</li>
-                            <li>Developed Demographic Viewer using ArcGIS Flex API (v2.0)</li>
+                            <li>Developed Demographic Viewer using ArcGIS Flex API (v1.3)</li>
                         </ul>
                     </section>
                     <section>
@@ -157,33 +157,34 @@
                     <section>
                         <h2>FCC Maps / MapBox</h2>
                         <ul>
-                            <li>use TileMill to create tiles</li>
+                            <li>Use TileMill to create tiles</li>
                             <li>Hosted on Mapbox</li>
-                            <li>extremely fast time-to-market, but limited functionality</li>
-                            <li>easily sharing tileset, embedding map</li>
+                            <li>Extremely fast time-to-market, but limited functionality</li>
+                            <li>Easily sharing tileset, embedding map</li>
                         </ul>
                         <br><br>
                         <div>
                         <samll><a href="http://www.fcc.gov/maps" target="_blank">Open Demo - FCC Maps</a></small>
                         </div>
                     </section>
-                    <!-- <section>
+                    <section>
                         <h2>Low Power FM Channel Analysis / CartoDB</h2>
                         <ul>
                             <li>Entire PostGIS as RESTful service</li>
                             <li>Torque library for spatial/temporal visualization</li>
-                            <li>Both SQL API and Map API for easy integration</li>                        
+                            <li>Both SQL API and Map API for easy integration</li>  
+                            <li>Both Google Map and Mapbox as base layer</li>                       
                         </ul>
                         <br><br>
                         <div>
-                        <samll><a href="http://www.fcc.gov/maps/evolution-lpfm-stations" target="_blank">Open Demo - FCC LPFM</a></small>
+                        <samll><a href="http://xqin1.github.io/cartodb/lpfmpoint.html" target="_blank">Open Demo - FCC LPFM</a></small>
                         </div>
-                    </section> -->
+                    </section>
                     <section>
                         <h2>Map-oriented Apps</h2>
                         <ul>
                             <li>Rigth Tool for Right Job</li>
-                            <li>Most Open Source Tools, FME and ESRI Desktop tools mixed in</li>
+                            <li>Most Open Source Tools, FME and ESRI Desktop mixed in</li>
                             <li>Focused story, simple UI</li> 
                             <li>Easy to maintain is top priority</li>                       
                         </ul>
@@ -197,15 +198,15 @@
                         <ul>
                             <li>Visualization framework, ultimate flexibility</li>
                             <li>Powerful GEO package</li>
-                            <li>integration with LeafLet.js for best of both</li> 
-                            <li>Steep learning curse, tons of exmaples</li>                       
+                            <li>Integration with LeafLet.js for best of both</li> 
+                            <li>Steep learning curve, tons of exmaples</li>                       
                         </ul>
                         <br><br>
                         <div>
-                        <samll><a href="http://fcc.github.io/calltraffic/traffic2011.html" target="_blank">Open Demo - 2011 call traffic</a></small>
+                        <samll><a href="http://fcc.github.io/calltraffic/traffic2011.html" target="_blank">Open Demo - 2011 Call Traffic</a></small>
                         </div>
                         <div>
-                            <samll><a href="http://fcc.github.io/calltraffic/trafficbyyear.html" target="_blank">Open Demo - time series</a></small>
+                            <samll><a href="http://fcc.github.io/calltraffic/trafficbyyear.html" target="_blank">Open Demo - Time Series</a></small>
                         </div>
                     </section>
                 </section>
@@ -225,7 +226,7 @@
                         <ul>
                             <li>Authored by d3.js creator</li>
                             <li>Optimized to slice and dice large dataset</li>
-                            <li>Coordinated multi-dimention visualization</li>
+                            <li>Coordinated multi-dimentional visualization</li>
                         </ul>
                         <div>
                         <samll><a href="http://xqin1.github.com/crossfilterExample/" target="_blank">Open Demo - Cross Filter</a></small>
@@ -247,10 +248,10 @@
                         <ul>
                             <li>Plugin for popular Leaflet libary</li>
                             <li>Classic point cluster solution with great performance</li>
-                            <li>Extention point for customization</li>
+                            <li>Extention hook for customization</li>
                         </ul>
                         <div>
-                        <samll><a href="http://localhost/projects/radioservice/radiostation.html" target="_blank">Open Demo - Cluster</a></small>
+                        <samll><a href="http://xqin1.github.io/radio/radiostation.html" target="_blank">Open Demo - Cluster</a></small>
                         </div>
                     </section>
                     <section>
@@ -261,7 +262,7 @@
                             <li>Functioal product from day one</li>
                         </ul>
                         <div>
-                        <samll><a href="http://localhost/projects/radioservice/results-summary.html" target="_blank">Open Demo - Production Ready</a></small>
+                        <samll><a href="http://xqin1.github.io/radio/results-summary.html" target="_blank">Open Demo - Production Ready</a></small>
                         </div>
 
                     </section>
@@ -396,6 +397,41 @@ for city_name in cities:
                                 reproject('epsg:900913')
                         </code></pre>
                     </section>
+                    <section>
+                        <h3>ArcPy</h3>
+                        <pre><code contenteditable>
+#!C:\Python26\ArcGIS10.0\python.exe
+# -*- coding: utf-8 -*-
+import arcpy
+import sys
+import os
+import subprocess
+import json
+def main():
+        try:
+if companyCount>396:       
+    inFeature = shapeFileDir + "\\" + shapeFile
+    outFeature = shapeFileDir + "\\" + shapeFile.split(".")[0] + "_disso.shp" 
+    arcpy.Dissolve_management(inFeature,outFeature)
+......
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Node.js</h3>
+                        <pre><code contenteditable>
+var MongoClient = require('mongodb').MongoClient,
+    Server = require('mongodb').Server,
+    async = require('async'),
+    fs = require('fs');
+......
+var cursor = apiStat.find(query,projection);
+cursor.toArray(function(err,results){
+        if (err) {console.log("error");congoClient.close();throw err};
+        console.log(results.length);
+}
+.......
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
@@ -460,6 +496,7 @@ for city_name in cities:
                             <li>GIS  *IS* IT</li>
                             <li>DATA</li>
                             <li>OPEN (Regardless of Choice of Tools)</li>
+                            <li>CLOUD</li>
                             <li>MOBILE</li>
                             <li>API</li>
                             <li>TIME TO MARKET</li>
@@ -469,13 +506,14 @@ for city_name in cities:
                 <section>
                     <h1>Spatial Isn't Special</h1>
                 </section>
+                
+            <section>
+                <h1 style="padding-top: 230px;">Thank You!</h1>
+            </section>
             <section>
                 <h1 style="padding-top: 230px;">Questions?</h1>
             </section>
 
-            <section>
-                <h1 style="padding-top: 230px;">Thank You!</h1>
-            </section>
 
             </div> <!-- END OF SLIDES -->
 
